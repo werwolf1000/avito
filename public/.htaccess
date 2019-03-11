@@ -1,0 +1,5 @@
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#L - последнее правило
+#QSA - Дополнительный get параметры не должны отбрасываться
+RewriteRule (.*) index.php?$1 [L,QSA]

@@ -1,0 +1,20 @@
+{
+    "name": "vendor/werwolf",
+    "description": "phpwebmaster",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Werwolf Z",
+            "email": "anchikin@mail.ru"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "ishop\\": "vendor/ishop/core",
+            "app\\": "app"
+        }
+    },
+    "require": {
+        "doctrine/dbal": "*"
+    }
+}
