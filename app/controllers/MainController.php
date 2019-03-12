@@ -32,6 +32,8 @@ class MainController extends AppController
      * @throws \Exception
      */
     public function indexAction(){
+
+        echo "Начало";
         $this->insert_db->insertLog('начало','https://www.avito.ru/moskva/avtomobili?radius=0');
         $model = new \app\models\GetPageAvitoModel();
 
