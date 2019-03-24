@@ -105,9 +105,18 @@ class MainController extends AppController
         $links = $link_model->getLinks();
         foreach($links as $k => $link){
             $page = $model->GetRequestAvitoAdvert($link['link']);
+            $mobile_page = $model->GetRequestAvitoMobileAdvert($link['link']);
             $page = mb_convert_encoding ($page, 'HTML-ENTITIES', 'UTF-8');
+            $mobile_page = mb_convert_encoding ($mobile_page, 'HTML-ENTITIES', 'UTF-8');
+
             $xml = new \app\models\XmlPathParse($page);
             $advert = $xml->getAdvert();
+            unset($xml);
+
+            $xml = new \app\models\XmlPathParse($mobile_page);
+            $xml->getPhone();
+            $advert['phone'] = $xml->getPhone();
+            unset($xml);
 
             $insert_id = $this->insert_db->insertAdvert($link['id'], $advert);
             if($insert_id){

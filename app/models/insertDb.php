@@ -67,7 +67,8 @@ class insertDb extends Connect
             '`number_of_doors`' => '?',
             '`vin`' => '?',
             '`addr`' => '?',
-            '`price`' => '?'
+            '`price`' => '?',
+            '`phone`' => '?'
         ]);
 
         $queryBuilder->setParameter(0, $id);
@@ -89,6 +90,7 @@ class insertDb extends Connect
         $queryBuilder->setParameter(16, $arr['vin']);
         $queryBuilder->setParameter(17, $arr['addr']);
         $queryBuilder->setParameter(18, $arr['price']);
+        $queryBuilder->setParameter(19, $arr['phone']);
         $queryBuilder->execute();
         return $this->conn->lastInsertId();
     }

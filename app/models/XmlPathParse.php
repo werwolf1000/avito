@@ -164,6 +164,18 @@ class XmlPathParse
         return $arr;
     }
 
+    public function getPhone(){
+        $xpath = new \DomXPath( $this->dom );
+        $_res = $xpath->query('//*[@data-marker="item-contact-bar/call"]');
+        $phone = '';
+        foreach( $_res as $key => $obj ) {
+            $str = $obj->getAttribute('href');
+            $phone = preg_replace('#tel:#','',$str);
+
+        }
+        return $phone;
+    }
+
 
     public function __destruct()
     {
