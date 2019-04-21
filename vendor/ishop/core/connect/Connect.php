@@ -24,7 +24,7 @@ abstract class Connect
 
         $connectionParams = array(
             'dbname' => 'avito',
-            'user' => 'root',
+            'user' => 'werwolf',
             'password' => '2619192',
             'host' => 'mysql:host=127.0.0.1;dbname=avito',
             'driver' => 'pdo_mysql',
