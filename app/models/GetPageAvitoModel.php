@@ -94,7 +94,7 @@ class GetPageAvitoModel extends Connect
 
         if($ex === false)
         {
-            throw new \Exception(curl_error($cl));
+            var_dump(curl_error($cl));
         }
         curl_close($cl);
         return $ex;

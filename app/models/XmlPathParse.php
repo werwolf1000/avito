@@ -32,7 +32,7 @@ class XmlPathParse
            }
         }
         unset($xpath);
-        return 100;
+        return 3;
     }
 
     public function getLinks(){
@@ -95,7 +95,10 @@ class XmlPathParse
                 $arr['owners'] = trim($obj->childNodes[2]->nodeValue);
             }
             if(trim($obj->childNodes[1]->nodeValue) == 'Пробег:'){
-                $arr['mileage'] = trim($obj->childNodes[2]->nodeValue);
+
+                $arr['mileage'] = preg_replace('/\W/', '', $obj->childNodes[2]->nodeValue);
+
+                $arr['mileage'] = intval($arr['mileage']);
             }
             if(trim($obj->childNodes[1]->nodeValue) == 'Руль:'){
                 $arr['rudder'] = trim($obj->childNodes[2]->nodeValue);
@@ -107,7 +110,8 @@ class XmlPathParse
                 $arr['color'] = trim($obj->childNodes[2]->nodeValue);
             }
             if(trim($obj->childNodes[1]->nodeValue) == 'Объём двигателя:'){
-                $arr['engine_capacity'] = trim($obj->childNodes[2]->nodeValue);
+
+                $arr['engine_capacity'] = floatval(trim($obj->childNodes[2]->nodeValue));
             }
             if(trim($obj->childNodes[1]->nodeValue) == 'Модель:'){
                 $arr['model'] = trim($obj->childNodes[2]->nodeValue);
@@ -128,7 +132,8 @@ class XmlPathParse
                 $arr['transmission'] = trim($obj->childNodes[2]->nodeValue);
             }
             if(trim($obj->childNodes[1]->nodeValue) == 'Мощность двигателя:'){
-                $arr['engine_power'] = trim($obj->childNodes[2]->nodeValue);
+                $arr['engine_power'] = trim(preg_replace('/л\.с\./', '', $obj->childNodes[2]->nodeValue));
+                $arr['engine_power'] = intval(trim($obj->childNodes[2]->nodeValue));
             }
             if(trim($obj->childNodes[1]->nodeValue) == 'Количество дверей:'){
                 $arr['number_of_doors'] = trim($obj->childNodes[2]->nodeValue);

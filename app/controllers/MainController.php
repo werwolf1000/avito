@@ -31,10 +31,10 @@ class MainController extends AppController
     /**Точка входа
      * @throws \Exception
      */
-    public function indexAction(){
+    public function oneAction(){
 
-        echo "Начало";
-        $this->insert_db->insertLog('начало','https://www.avito.ru/moskva/avtomobili?radius=0');
+
+        $this->insert_db->insertLog('begin step 1','https://www.avito.ru/moskva/avtomobili?radius=0');
         $model = new \app\models\GetPageAvitoModel();
 
         $page = $model->GetRequestAvito();
@@ -64,8 +64,14 @@ class MainController extends AppController
             sleep(1);
         }
 
+        $this->insert_db->insertLog('end step 1','');
+    }
+
+
+    public function twoAction(){
+        $this->insert_db->insertLog('begin step 2','');
         $this->parseStepTwo();
-        $this->insert_db->insertLog('конец','');
+        $this->insert_db->insertLog('end step 2','');
     }
 
     /**
