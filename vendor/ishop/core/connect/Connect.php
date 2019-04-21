@@ -26,7 +26,7 @@ abstract class Connect
             'dbname' => 'avito',
             'user' => 'werwolf',
             'password' => '2619192',
-            'host' => 'mysql:host=127.0.0.1;dbname=avito',
+            'host' => '127.0.0.1',
             'driver' => 'pdo_mysql',
         );
         $this->conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
